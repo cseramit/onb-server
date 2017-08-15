@@ -1,0 +1,8 @@
+{
+    "USERNAME"  : "username",
+    "PASSWORD"  : "password",
+    "FIRST_NAME": "firstName",
+    "LAST_NAME" : "lastName",
+    "EMAIL_ID"  : "emailId",
+    "MOBILE_NO" : "mobileNumber"
+}
