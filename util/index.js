@@ -14,16 +14,22 @@ var propertyExists = function(object, propertyName) {
     /* Check Property Existence */
     if(object.hasOwnProperty(propertyName)) {
         /* Check property is defined and not null */
-        if(object[propertyName] != undefined && object[propertyName] != null) {
-            return true;
-        }
+        return isDefined(propertyName);
     }
     return false;
 };
 
 
+var isDefined = function(value) {
+    if(value != undefined && value != null) {
+        return true;
+    }
+};
+
+
 /*Export the relevant methods*/
 module.exports = {
-  'exists': propertyExists
+  'exists': propertyExists,
+  'isDefined': isDefined
 };
 

@@ -1,15 +1,22 @@
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+
+var express         = require('express');
+var path            = require('path');
+var logger          = require('morgan');
+var cookieParser    = require('cookie-parser');
+var bodyParser      = require('body-parser');
+var apiGateway      = require('./middleware/api-gateway');
 
 
 
 var signIn = require('./routes/signIn');
 var signUp = require('./routes/signUp');
 
+
 var app = express();
+
+//Route Validator
+app.use(apiGateway);
+
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -17,8 +24,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
+//Route Handlers
 app.use('/signIn', signIn);
 app.use('/signUp', signUp);
+
 
 
 // catch 404 and forward to error handler
@@ -39,5 +48,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.send('error');
 });
+
 
 module.exports = app;

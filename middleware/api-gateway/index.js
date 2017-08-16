@@ -1,19 +1,26 @@
 /**
  * Created by L075728 on 11/08/2017.
  */
-var signInRequestFormat = require('../request-mappers/sign-in-request-format');
-var signUpRequestFormat = require('../request-mappers/sign-up-request-format');
+var requestFormats = require('./validation-schema.json');
+
 
 var util = require('../../util');
 
-var routeValidator = function(request) {
+
+
+var routeValidator = function(req, resp, next) {
+
+    var requestType = req.url;
+    var reqFormat = requestFormats.requests[requestType];
     var retValue = true;
-    Object.keys(requestMapper).forEach(function(key,index) {
+
+
+    /*Object.keys(reqFormat).forEach(function(key,index) {
         retValue = retValue && util.exists(request.body, requestMapper[key]);
     });
-    return retValue;
+
+    console.log(retValue);*/
+    next();
 };
 
-module.exports = {
-    signInValidator: routeValidator
-};
+module.exports = routeValidator;

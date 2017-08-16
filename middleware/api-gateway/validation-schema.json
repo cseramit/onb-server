@@ -1,0 +1,15 @@
+{
+    "requests": {
+        "/signIn": {
+            "username": {
+                "notEmpty": true,
+                "errorMessage": "User Id should not be blank."
+
+            },
+            "password": {
+                "notEmpty": true,
+                "errorMessage": "Password should not be blank."
+            }
+        }
+    }
+}

@@ -6,6 +6,8 @@ var router     = express.Router();
 var apiGateway = require('../../middleware/api-gateway');
 
 
+
+
 router.post('/', function(req, resp, next){
     signUpHandler(req, resp, next);
 });
